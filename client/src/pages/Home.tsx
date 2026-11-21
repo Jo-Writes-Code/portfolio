@@ -1,10 +1,12 @@
 import Hero from "@/components/Hero";
+import Previews from "@/components/Previews";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#f4f3ef] text-[#1d1c1a]">
+    <div id="top" className="min-h-screen bg-white text-[#0a0a0a]">
       <main>
         <Hero />
+        <Previews />
       </main>
     </div>
   );

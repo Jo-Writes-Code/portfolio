@@ -1,90 +1,77 @@
+import { ArrowDown } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { CONTACT, OWNER, PROJECTS, type Project } from "@/data/projects";
 
-const pad = (n: number) => String(n).padStart(2, "0");
 const EASE = [0.2, 0.7, 0.2, 1] as const;
+const pad = (n: number) => String(n).padStart(2, "0");
 
-/** Content of one white preview panel. */
-function PanelArt({ project }: { project: Project }) {
-  if (project.wip || !project.desktop) {
-    return (
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-        <div className="absolute inset-4 border border-dashed border-[#cfcdc6]" />
-        <p className="display italic text-[#1d1c1a] text-5xl">Soon.</p>
-        <p className="mt-3 text-[13px] text-[#8a8882] italic max-w-[12rem]">
-          Work in progress. Not live yet.
-        </p>
-      </div>
-    );
-  }
+/** Live local time for the header, in East Africa Time. */
+function useClock() {
+  const read = () =>
+    new Intl.DateTimeFormat("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZone: "Africa/Dar_es_Salaam",
+    }).format(new Date());
+  const [time, setTime] = useState(read);
+  useEffect(() => {
+    const id = setInterval(() => setTime(read()), 15000);
+    return () => clearInterval(id);
+  }, []);
+  return time;
+}
 
+/** An iPhone in portrait view showing a project's mobile screenshot. */
+export function Phone({ project }: { project: Project }) {
   return (
-    <>
-      <img
-        src={project.desktop}
-        alt={`${project.name} website on a computer screen`}
-        width={1440}
-        height={900}
-        className="absolute left-[7%] top-[7%] w-[86%] aspect-[16/10] object-cover shadow-[0_18px_40px_-20px_rgba(0,0,0,0.5)] ring-1 ring-black/10"
-      />
-      <img
-        src={project.mobile}
-        alt={`${project.name} website on a phone`}
-        width={585}
-        height={1266}
-        className="absolute right-[9%] bottom-[5%] w-[40%] aspect-[585/1266] object-cover rounded-[0.9rem] border-4 border-[#1d1c1a] shadow-[0_20px_40px_-16px_rgba(0,0,0,0.6)]"
-      />
-    </>
+    <div className="relative h-full aspect-[585/1266] rounded-[1.1rem] md:rounded-[2.1rem] border-[3px] md:border-[7px] border-[#0a0a0a] bg-[#0a0a0a] shadow-[0_30px_60px_-25px_rgba(0,0,0,0.55)] overflow-hidden">
+      {project.mobile ? (
+        <img
+          src={project.mobile}
+          alt={`${project.name} website on an iPhone`}
+          width={585}
+          height={1266}
+          className="h-full w-full object-cover rounded-[0.8rem] md:rounded-[1.6rem]"
+        />
+      ) : (
+        <div className="h-full w-full rounded-[0.8rem] md:rounded-[1.6rem] bg-[#efefef] flex flex-col items-center justify-center text-center px-3">
+          <p className="display text-[clamp(1.4rem,3.2vw,2.8rem)]">Soon</p>
+          <p className="mt-2 text-[9px] md:text-[12px] font-bold text-[#6e6e6e]">
+            Work in progress
+          </p>
+        </div>
+      )}
+      {/* Dynamic Island */}
+      <span className="absolute left-1/2 -translate-x-1/2 top-[1.6%] h-[2.3%] w-[27%] rounded-full bg-[#0a0a0a]" />
+    </div>
   );
 }
 
-function Preview({
-  project,
-  index,
-  offset,
-}: {
-  project: Project;
-  index: number;
-  offset: string;
-}) {
+function PhoneSlot({ project, index }: { project: Project; index: number }) {
   const reduce = useReducedMotion();
+  // middle phone sits a little higher than the outer two
+  const lift = index === 1 ? "md:-translate-y-6" : "md:translate-y-5";
 
-  const panel = (
-    <div className="relative bg-white w-full aspect-[3/4] overflow-hidden transition-transform duration-500 group-hover:-translate-y-1.5">
-      <PanelArt project={project} />
-    </div>
-  );
-
-  const caption = (
-    <div className="mt-3">
-      <p className="inline-block border-b border-[#1d1c1a] font-medium text-[15px] leading-tight tabular-nums">
-        {pad(index + 1)} / {pad(PROJECTS.length)}
-      </p>
-      <p className="mt-2 ulink italic font-medium leading-snug">{project.name}</p>
-      <p className="text-[13px] text-[#8a8882] leading-snug mt-0.5">
-        {project.wip ? "Work in progress" : `${project.kind}, ${project.place}`}
-      </p>
-      <p className="mt-2 text-[13px] text-[#8a8882] group-hover:text-[#1d1c1a] transition-colors">
-        {project.url
-          ? `\u2014 ${project.url.replace("https://", "")}`
-          : "\u2014 Not live yet"}
-      </p>
-    </div>
-  );
-
-  const body = (
+  const inner = (
     <>
-      {panel}
-      {caption}
+      <div className="h-[62vw] md:h-[min(46vh,36vw)] transition-transform duration-500 group-hover:-translate-y-2">
+        <Phone project={project} />
+      </div>
+      <p className="mt-3 md:mt-4 text-[11px] md:text-[13px] font-bold leading-tight">
+        <span className="tabular-nums">{pad(index + 1)}</span>{" "}
+        <span className="hidden sm:inline">{project.name}</span>
+        {project.url && " \u2197"}
+      </p>
     </>
   );
 
   return (
     <motion.li
-      initial={reduce ? false : { opacity: 0, y: 36 }}
+      className={`list-none ${lift}`}
+      initial={reduce ? false : { opacity: 0, y: 80 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.25 + index * 0.12, ease: EASE }}
-      className={`list-none ${offset}`}
+      transition={{ duration: 0.9, delay: 0.3 + index * 0.12, ease: EASE }}
     >
       {project.url ? (
         <a
@@ -94,41 +81,35 @@ function Preview({
           aria-label={`Visit ${project.name}`}
           className="group block"
         >
-          {body}
+          {inner}
         </a>
       ) : (
-        <div className="group block">{body}</div>
+        <div className="group block">{inner}</div>
       )}
     </motion.li>
   );
 }
 
-const HEADLINE: { text: string; italic?: boolean }[] = [
-  { text: "The" },
-  { text: "Work" },
-  { text: "Of/" },
-  { text: "Jovin", italic: true },
-  { text: "Gogadi", italic: true },
-];
+const LINES = ["The work", "on the web"];
 
 function Headline() {
   const reduce = useReducedMotion();
   return (
-    <h1 className="display text-[clamp(3.4rem,16vw,6.5rem)] lg:text-[min(7.4vw,12vh)]">
-      <span className="sr-only">The work of {OWNER}</span>
-      {HEADLINE.map((l, i) => (
+    <h1 className="display text-center text-[clamp(3.4rem,17vw,5.5rem)] md:text-[min(13.4vw,23vh)]">
+      <span className="sr-only">The work on the web, by {OWNER}</span>
+      {LINES.map((line, i) => (
         <span
-          key={l.text}
+          key={line}
           aria-hidden
-          className="block overflow-hidden pb-[0.06em] -mb-[0.06em]"
+          className="block overflow-hidden pb-[0.08em] -mb-[0.08em]"
         >
           <motion.span
-            className={`block ${l.italic ? "italic text-[#1d1c1a]" : "text-[#8a8882]"}`}
-            initial={reduce ? false : { y: "105%" }}
+            className="block"
+            initial={reduce ? false : { y: "110%" }}
             animate={{ y: "0%" }}
-            transition={{ duration: 0.8, delay: i * 0.07, ease: EASE }}
+            transition={{ duration: 0.9, delay: i * 0.1, ease: EASE }}
           >
-            {l.text}
+            {line}
           </motion.span>
         </span>
       ))}
@@ -137,60 +118,59 @@ function Headline() {
 }
 
 export default function Hero() {
+  const time = useClock();
   const hasContact = Boolean(CONTACT.email || CONTACT.whatsapp);
   const contactHref = CONTACT.email
     ? `mailto:${CONTACT.email}`
     : `https://wa.me/${CONTACT.whatsapp}`;
 
-  const offsets = ["lg:mt-0", "lg:mt-20", "lg:mt-8"];
-
   return (
-    <section className="relative px-5 pt-6 pb-16 sm:px-8 lg:px-0 lg:py-0 lg:h-screen lg:min-h-[680px] lg:overflow-hidden">
-      {/* Wordmark */}
-      <p
-        className="ulink inline-block uppercase tracking-[0.02em] text-[15px] font-medium lg:absolute lg:left-12 lg:top-8"
-        style={{ fontFamily: '"Bodoni Moda", Georgia, serif' }}
-      >
-        {OWNER}
-      </p>
-
-      {/* Top right */}
-      <p className="hidden lg:block absolute right-12 top-8 text-[13px] text-[#8a8882]">
-        {hasContact ? (
-          <a href={contactHref} className="hover:text-[#1d1c1a]">
-            Contact
+    <section className="relative px-5 pt-5 pb-16 md:px-8 md:py-0 md:h-screen md:min-h-[700px] md:overflow-hidden">
+      {/* Header */}
+      <header className="flex items-center justify-between md:absolute md:inset-x-8 md:top-6 md:z-30">
+        <p className="text-[18px] md:text-[20px] font-extrabold tracking-[-0.04em] uppercase">
+          {OWNER}
+        </p>
+        <div className="flex items-center gap-4 text-[13px] font-semibold">
+          <span className="hidden sm:inline">
+            <span className="text-[#6e6e6e]">/</span> Tanzania &ndash; {time}
+          </span>
+          <a
+            href="#previews"
+            className="inline-flex items-center gap-2 rounded-full bg-[#0a0a0a] px-4 py-2 text-white"
+          >
+            <ArrowDown className="size-3.5" aria-hidden />
+            work
           </a>
-        ) : (
-          "Three websites"
-        )}
-      </p>
+        </div>
+      </header>
 
-      {/* Headline */}
-      <div className="mt-10 lg:mt-0 lg:absolute lg:left-12 lg:top-[19vh] lg:z-20 lg:pointer-events-none">
+      {/* Big text */}
+      <div className="mt-14 md:mt-0 md:absolute md:inset-x-0 md:top-[11vh]">
         <Headline />
       </div>
 
-      {/* Intro */}
-      <p className="mt-6 max-w-xs text-[15px] text-[#4a4843] lg:mt-0 lg:absolute lg:left-12 lg:bottom-9 lg:w-[18vw] lg:min-w-[14rem] lg:text-[14px]">
+      {/* Intro (left) */}
+      <p className="mt-8 max-w-[15rem] text-[14px] font-semibold leading-snug md:mt-0 md:absolute md:left-8 md:top-[47vh] md:z-20 md:max-w-[14rem]">
         Websites for small businesses in Tanzania: a grill, a bakery, and one
         more on the way.
         {hasContact && (
           <>
             {" "}
-            <a href={contactHref} className="ulink text-[#1d1c1a]">
+            <a href={contactHref} className="underline underline-offset-2">
               Say hello.
             </a>
           </>
         )}
       </p>
 
-      {/* Previews */}
+      {/* Three iPhones, side by side, over the text */}
       <ul
-        className="mt-12 grid gap-12 sm:grid-cols-2 sm:gap-x-6 lg:mt-0 lg:gap-0 lg:absolute lg:right-12 lg:top-[6.5rem] lg:grid-cols-[repeat(3,min(21.5vw,33vh))] lg:gap-x-[1.2vw] lg:items-start"
-        aria-label="Projects"
+        className="relative z-10 flex justify-center gap-[3vw] md:mt-0 md:gap-[1.4vw] md:absolute md:inset-x-0 md:top-[38vh] max-md:mt-6"
+        aria-label="Projects on iPhone"
       >
         {PROJECTS.map((p, i) => (
-          <Preview key={p.slug} project={p} index={i} offset={offsets[i]} />
+          <PhoneSlot key={p.slug} project={p} index={i} />
         ))}
       </ul>
     </section>

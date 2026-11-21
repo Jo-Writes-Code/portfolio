@@ -1,13 +1,13 @@
 export type Project = {
   slug: string;
-  /** Two display lines: first in grey roman, second in dark italic. */
-  lines: [string, string];
   name: string;
   kind: string;
   place: string;
   blurb: string;
   url?: string;
+  /** Landscape (desktop) screenshot */
   desktop?: string;
+  /** Portrait (iPhone) screenshot */
   mobile?: string;
   wip?: boolean;
 };
@@ -23,7 +23,6 @@ export const CONTACT = {
 export const PROJECTS: Project[] = [
   {
     slug: "salama-bbq",
-    lines: ["Salama", "BBQ"],
     name: "Salama BBQ",
     kind: "Restaurant website",
     place: "Kahama, Tanzania",
@@ -35,7 +34,6 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "wisks-and-wishes",
-    lines: ["Wisks &", "Wishes"],
     name: "Wisks & Wishes",
     kind: "Bakery website",
     place: "Dodoma, Tanzania",
@@ -47,12 +45,14 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "michael-binzi",
-    lines: ["Michael", "Binzi"],
     name: "Michael Binzi",
     kind: "Website",
     place: "Work in progress",
     blurb:
       "Still being built. The address (michael-binzi.vercel.app) is not live yet, so there is nothing to visit for now.",
+    url: undefined,
     wip: true,
   },
 ];
+
+export const WIP_ADDRESS = "michael-binzi.vercel.app";

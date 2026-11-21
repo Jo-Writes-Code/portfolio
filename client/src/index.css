@@ -119,15 +119,16 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: "Newsreader", Georgia, "Times New Roman", serif;
+    font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
     font-size: 15px;
-    line-height: 1.5;
+    line-height: 1.4;
+    font-weight: 500;
   }
   h1,
   h2,
   h3 {
-    font-family: "Bodoni Moda", "Didot", Georgia, serif;
-    font-weight: 400;
+    font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+    font-weight: 900;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -185,31 +186,23 @@
   }
 }
 
-/* Portfolio palette: pale paper, near-black ink, grey display type, white panels */
+/* Portfolio palette: white paper, solid black ink */
 :root {
-  --background: #f4f3ef;
-  --foreground: #1d1c1a;
-  --muted-foreground: #8a8882;
-  --border: #dcdad3;
-  --primary: #1d1c1a;
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --muted-foreground: #6e6e6e;
+  --border: #e6e6e6;
+  --primary: #0a0a0a;
   --primary-foreground: #ffffff;
-  --ring: #1d1c1a;
+  --ring: #0a0a0a;
 }
 
 .display {
-  font-family: "Bodoni Moda", "Didot", Georgia, serif;
+  font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 900;
   text-transform: uppercase;
-  line-height: 0.92;
-  letter-spacing: -0.015em;
-  font-weight: 450;
-  font-optical-sizing: none;
-  font-variation-settings: "opsz" 14;
-}
-
-.ulink {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
+  line-height: 0.82;
+  letter-spacing: -0.045em;
 }
 
 html {
