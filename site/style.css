@@ -264,9 +264,33 @@ p {
   margin-top: 0;
 }
 
-.project-name {
+.project-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
   margin-bottom: 16px;
+}
+
+.project-name {
   font-size: clamp(2.4rem, 8.5vw, 8rem);
+}
+
+.project a.repo-link {
+  display: inline-block;
+  flex-shrink: 0;
+  padding: 7px 14px;
+  border: 1.5px solid #0a0a0a;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.project a.repo-link:hover {
+  opacity: 1;
+  background: #0a0a0a;
+  color: #fff;
 }
 
 .project a {
@@ -282,6 +306,10 @@ p {
   height: auto;
   aspect-ratio: 16 / 10;
   object-fit: cover;
+}
+
+.project > .project-name {
+  margin-bottom: 16px;
 }
 
 .soon-block {
