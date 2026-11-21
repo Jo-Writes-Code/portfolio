@@ -151,7 +151,7 @@ export default function Hero() {
       </div>
 
       {/* Intro (left) */}
-      <p className="mt-8 max-w-[15rem] text-[14px] font-semibold leading-snug md:mt-0 md:absolute md:left-8 md:top-[47vh] md:z-20 md:max-w-[14rem]">
+      <p className="mt-8 max-w-[15rem] text-[14px] font-semibold leading-snug md:mt-0 md:absolute md:left-8 md:top-[54vh] md:z-20 md:max-w-[14rem]">
         Websites for small businesses in Tanzania: a grill, a bakery, and one
         more on the way.
         {hasContact && (
