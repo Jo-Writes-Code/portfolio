@@ -1,13 +1,10 @@
-import Showcase from "@/components/Showcase";
-import { About, WorkIndex } from "@/components/Sections";
+import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#f4f3ef] text-[#1d1c1a] scroll-smooth">
+    <div className="min-h-screen bg-[#f4f3ef] text-[#1d1c1a]">
       <main>
-        <Showcase />
-        <WorkIndex />
-        <About />
+        <Hero />
       </main>
     </div>
   );
