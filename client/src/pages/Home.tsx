@@ -1,12 +1,12 @@
 import Hero from "@/components/Hero";
-import Previews from "@/components/Previews";
+import Projects from "@/components/Projects";
 
 export default function Home() {
   return (
     <div id="top" className="min-h-screen bg-white text-[#0a0a0a]">
       <main>
         <Hero />
-        <Previews />
+        <Projects />
       </main>
     </div>
   );

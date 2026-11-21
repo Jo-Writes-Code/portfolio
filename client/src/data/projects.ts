@@ -14,10 +14,9 @@ export type Project = {
 
 export const OWNER = "Jovin Gogadi";
 
-// Add your real contact details. Empty values are hidden.
 export const CONTACT = {
-  email: "",
-  whatsapp: "", // digits only with country code, e.g. 255712345678
+  phone: "+255762514214",
+  phoneTel: "+255762514214",
 };
 
 export const PROJECTS: Project[] = [
@@ -54,5 +53,3 @@ export const PROJECTS: Project[] = [
     wip: true,
   },
 ];
-
-export const WIP_ADDRESS = "michael-binzi.vercel.app";
