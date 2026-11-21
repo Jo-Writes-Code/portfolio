@@ -64,7 +64,7 @@ const LINES = ["My", "Portfolio"];
 function Headline() {
   const reduce = useReducedMotion();
   return (
-    <h1 className="display text-center text-[15vw] md:text-[min(16vw,23vh)]">
+    <h1 className="display text-center text-[length:var(--fs)]">
       <span className="sr-only">My portfolio, by {OWNER}</span>
       {LINES.map((line, i) => (
         <motion.span
@@ -84,7 +84,7 @@ function Headline() {
 
 export default function Hero() {
   return (
-    <section className="relative px-5 pt-5 pb-16 md:px-0 md:py-0 md:h-screen md:min-h-[700px] md:overflow-hidden">
+    <section className="relative px-5 pt-5 pb-16 md:px-0 md:pt-0 md:pb-[10vh] [--fs:15vw] md:[--fs:min(16vw,23vh)]">
       {/* Header */}
       <header className="flex items-start justify-between gap-4 md:absolute md:inset-x-8 md:top-6 md:z-30">
         <p className="text-[18px] md:text-[20px] font-extrabold tracking-[-0.04em] uppercase">
@@ -99,7 +99,7 @@ export default function Hero() {
       </header>
 
       {/* Big text */}
-      <div className="mt-14 md:mt-0 md:absolute md:inset-x-0 md:top-[11vh]">
+      <div className="mt-14 md:mt-0 md:pt-[11vh]">
         <Headline />
       </div>
 
@@ -109,9 +109,9 @@ export default function Hero() {
         working websites for small businesses.
       </p>
 
-      {/* Three iPhones: equal columns, same level, thin gaps, bottoms run off screen */}
+      {/* Three iPhones: equal columns, same level, shown in full */}
       <ul
-        className="relative z-10 mt-8 -mx-5 grid grid-cols-3 gap-[2.5vw] px-[2.5vw] items-start h-[54vw] overflow-hidden md:mx-0 md:mt-0 md:h-auto md:overflow-visible md:gap-[1.6vw] md:px-[1.6vw] md:absolute md:inset-x-0 md:top-[46vh]"
+        className="relative z-10 mt-8 -mx-5 grid grid-cols-3 items-start gap-[3vw] px-[5vw] md:mx-0 md:mt-[calc(var(--fs)*-0.4)] md:gap-[5vw] md:px-[8vw]"
         aria-label="Projects on iPhone"
       >
         {PROJECTS.map((p, i) => (
