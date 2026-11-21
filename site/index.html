@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jovin Gogadi | My Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio of Jovin Gogadi, a freelance web developer based in Tanzania."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body id="top">
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <header class="hero-header">
+          <p class="name">Jovin Gogadi</p>
+          <p class="contact">
+            Contact: <a href="tel:+255762514214">+255762514214</a>
+          </p>
+        </header>
+
+        <h1 class="display headline">
+          <span>My</span>
+          <span>Portfolio</span>
+        </h1>
+
+        <div class="phones-wrap">
+          <!-- "LESS IS MORE" rows are filled in by script.js -->
+          <div class="marquee" id="marquee" aria-hidden="true"></div>
+
+          <ul class="phones" aria-label="Projects on iPhone">
+            <li>
+              <a
+                href="https://salamabbq.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Salama BBQ"
+              >
+                <div class="phone">
+                  <img
+                    src="images/salama_m.jpg"
+                    alt="Salama BBQ website on an iPhone"
+                    width="585"
+                    height="1266"
+                  />
+                  <span class="island"></span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://wisks-and-wishes.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Wisks &amp; Wishes"
+              >
+                <div class="phone">
+                  <img
+                    src="images/wisks_m.jpg"
+                    alt="Wisks &amp; Wishes website on an iPhone"
+                    width="585"
+                    height="1266"
+                  />
+                  <span class="island"></span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <div class="phone" aria-label="Michael Binzi, work in progress">
+                <div class="soon">
+                  <p class="display soon-title">Soon</p>
+                  <p class="soon-note">Work in progress</p>
+                </div>
+                <span class="island"></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <p class="about">
+          I&rsquo;m a freelance web developer based in Tanzania. I build simple,
+          working websites for small businesses.
+        </p>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="projects" id="projects">
+        <h2 class="projects-title">Projects</h2>
+
+        <article class="project">
+          <h3 class="display project-name">Salama BBQ</h3>
+          <a
+            href="https://salamabbq.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Salama BBQ"
+          >
+            <img
+              src="images/salama_d.jpg"
+              alt="Salama BBQ website preview"
+              width="1440"
+              height="900"
+              loading="lazy"
+            />
+          </a>
+        </article>
+
+        <article class="project">
+          <h3 class="display project-name">Wisks &amp; Wishes</h3>
+          <a
+            href="https://wisks-and-wishes.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Wisks &amp; Wishes"
+          >
+            <img
+              src="images/wisks_d.jpg"
+              alt="Wisks &amp; Wishes website preview"
+              width="1440"
+              height="900"
+              loading="lazy"
+            />
+          </a>
+        </article>
+
+        <article class="project">
+          <h3 class="display project-name">Michael Binzi</h3>
+          <div class="soon-block">
+            <p class="display soon-title">Soon</p>
+            <p class="soon-note">Work in progress</p>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

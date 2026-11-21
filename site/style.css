@@ -1,0 +1,397 @@
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: #0a0a0a;
+  font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+/* Big black display type */
+.display {
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.82;
+  letter-spacing: -0.045em;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  --fs: 15vw; /* headline size, also used to position the phones */
+  position: relative;
+  isolation: isolate;
+  padding: 20px 20px 24px;
+}
+
+.hero-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.contact {
+  font-size: 13px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.contact a {
+  text-underline-offset: 2px;
+}
+
+.headline {
+  position: relative;
+  z-index: 1;
+  margin-top: 56px;
+  text-align: center;
+  font-size: var(--fs);
+}
+
+.headline span {
+  display: block;
+}
+
+/* Phones + the text rows behind them */
+.phones-wrap {
+  position: relative;
+  margin: 32px -20px 0;
+}
+
+.phones {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  gap: 3vw;
+  padding: 0 5vw;
+}
+
+.phones a {
+  display: block;
+}
+
+.phones a:hover {
+  opacity: 0.9;
+}
+
+.phone {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 15.5;
+  overflow: hidden;
+  border: 3px solid #0a0a0a;
+  border-radius: 1.2rem;
+  background: #0a0a0a;
+  box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.45);
+}
+
+.phone img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 0.9rem;
+}
+
+.island {
+  position: absolute;
+  top: 1.4%;
+  left: 50%;
+  width: 27%;
+  height: 2.2%;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #0a0a0a;
+}
+
+.soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 45% 8px 0;
+  text-align: center;
+  background: #efefef;
+  border-radius: 0.9rem;
+}
+
+.soon-title {
+  font-size: clamp(1.3rem, 5.5vw, 5rem);
+}
+
+.soon-note {
+  margin-top: 8px;
+  font-size: 8px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #6e6e6e;
+}
+
+.about {
+  max-width: 20rem;
+  margin-top: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* ---------- "Less is more" rows (outline text, behind phones) ---------- */
+.marquee {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  font-size: 6vw;
+  font-weight: 900;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: transparent;
+  -webkit-text-stroke: 1px #0a0a0a;
+  paint-order: stroke fill;
+}
+
+.marquee-row {
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: slide-right 70s linear infinite;
+}
+
+.marquee-row.left .marquee-track {
+  animation-name: slide-left;
+}
+
+.marquee-half {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.marquee-half span {
+  padding: 0 0.35em;
+  white-space: nowrap;
+}
+
+@keyframes slide-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- Projects ---------- */
+.projects {
+  padding: 0 20px 96px;
+}
+
+.projects-title {
+  margin-bottom: 24px;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.project {
+  margin-top: 56px;
+}
+
+.project:first-of-type {
+  margin-top: 0;
+}
+
+.project-name {
+  margin-bottom: 16px;
+  font-size: clamp(2.4rem, 8.5vw, 8rem);
+}
+
+.project a {
+  display: block;
+}
+
+.project a:hover {
+  opacity: 0.9;
+}
+
+.project img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.soon-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 10;
+  background: #efefef;
+  text-align: center;
+}
+
+.soon-block .soon-title {
+  font-size: clamp(3rem, 12vw, 10rem);
+}
+
+.soon-block .soon-note {
+  margin-top: 16px;
+  font-size: 13px;
+}
+
+/* ---------- Tablet and up ---------- */
+@media (min-width: 640px) {
+  .soon-note {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero {
+    --fs: min(16vw, 23vh);
+    padding: 0 0 2vh;
+  }
+
+  .hero-header {
+    position: absolute;
+    top: 24px;
+    left: 32px;
+    right: 32px;
+    z-index: 30;
+  }
+
+  .name {
+    font-size: 20px;
+  }
+
+  .contact {
+    font-size: 14px;
+  }
+
+  .headline {
+    margin-top: 0;
+    padding-top: 11vh;
+  }
+
+  .phones-wrap {
+    margin: calc(var(--fs) * -0.4) 0 0;
+  }
+
+  .phones {
+    gap: 5vw;
+    padding: 0 8vw;
+  }
+
+  .phone {
+    border-width: 10px;
+    border-radius: 3rem;
+  }
+
+  .phone img,
+  .soon {
+    border-radius: 2.3rem;
+  }
+
+  .soon-note {
+    font-size: 14px;
+  }
+
+  .marquee {
+    font-size: 5vw;
+    -webkit-text-stroke-width: 1.5px;
+  }
+
+  .about {
+    position: absolute;
+    top: 9.5vh;
+    left: 32px;
+    z-index: 20;
+    max-width: 12rem;
+    margin-top: 0;
+    font-size: 13px;
+  }
+
+  .projects {
+    padding: 0 32px 128px;
+  }
+
+  .projects-title {
+    margin-bottom: 32px;
+    font-size: 20px;
+  }
+
+  .project {
+    margin-top: 96px;
+  }
+}
+
+/* ---------- Respect reduced-motion settings ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
