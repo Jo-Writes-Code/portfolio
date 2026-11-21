@@ -7,14 +7,14 @@ const EASE = [0.25, 0.1, 0.25, 1] as const;
 /** An iPhone in portrait view showing a project's mobile screenshot. */
 function Phone({ project }: { project: Project }) {
   return (
-    <div className="relative w-full aspect-[585/1266] rounded-[1.2rem] md:rounded-[3rem] border-[3px] md:border-[10px] border-[#0a0a0a] bg-[#0a0a0a] shadow-[0_30px_60px_-25px_rgba(0,0,0,0.45)] overflow-hidden">
+    <div className="relative w-full aspect-[9/15.5] rounded-[1.2rem] md:rounded-[3rem] border-[3px] md:border-[10px] border-[#0a0a0a] bg-[#0a0a0a] shadow-[0_30px_60px_-25px_rgba(0,0,0,0.45)] overflow-hidden">
       {project.mobile ? (
         <img
           src={project.mobile}
           alt={`${project.name} website on an iPhone`}
           width={585}
           height={1266}
-          className="h-full w-full object-cover rounded-[0.9rem] md:rounded-[2.3rem]"
+          className="h-full w-full object-cover object-top rounded-[0.9rem] md:rounded-[2.3rem]"
         />
       ) : (
         <div className="h-full w-full rounded-[0.9rem] md:rounded-[2.3rem] bg-[#efefef] flex flex-col items-center justify-start pt-[45%] text-center px-2">
