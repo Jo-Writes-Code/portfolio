@@ -213,3 +213,29 @@ html {
     scroll-behavior: auto;
   }
 }
+
+/* "Less is more" marquee rows: transparent fill, black outline */
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 2px #0a0a0a;
+  paint-order: stroke fill;
+  letter-spacing: 0.01em;
+}
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+.marquee-right { animation: marquee-right 70s linear infinite; }
+.marquee-left { animation: marquee-left 70s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-right, .marquee-left { animation: none; }
+}

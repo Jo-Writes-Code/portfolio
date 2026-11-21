@@ -12,3 +12,5 @@ Portfolio inspired by "The Future in Black": white page, giant black grotesk hea
 - [x] **Michael Binzi (michael-binzi.vercel.app)**: "Soon / Work in progress" placeholder, no link.
 - [x] **Responsive**: phones stay side by side on mobile; projects stack.
 - [x] **Delivery**: `manus-routes.json`, logo metadata, checkpoint saved.
+- [x] **Marquee behind phones**: three repeating rows of "LESS IS MORE" (transparent fill, black outline); row 1 left to right, row 2 right to left, row 3 left to right.
+- [x] **Projects heading**: no line underneath, section moved up closer to the hero.

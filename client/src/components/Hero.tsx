@@ -59,6 +59,29 @@ function PhoneSlot({ project, index }: { project: Project; index: number }) {
   );
 }
 
+const PHRASE = "LESS IS MORE";
+
+/** One endlessly repeating row of outlined text. The track holds two identical halves. */
+function MarqueeRow({ direction }: { direction: "right" | "left" }) {
+  const half = (
+    <span className="flex shrink-0">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <span key={i} className="px-[0.35em]">
+          {PHRASE}
+        </span>
+      ))}
+    </span>
+  );
+  return (
+    <div className="overflow-hidden">
+      <div className={`marquee-track marquee-${direction}`}>
+        {half}
+        {half}
+      </div>
+    </div>
+  );
+}
+
 const LINES = ["My", "Portfolio"];
 
 function Headline() {
@@ -84,7 +107,7 @@ function Headline() {
 
 export default function Hero() {
   return (
-    <section className="relative px-5 pt-5 pb-16 md:px-0 md:pt-0 md:pb-[10vh] [--fs:15vw] md:[--fs:min(16vw,23vh)]">
+    <section className="relative isolate px-5 pt-5 pb-6 md:px-0 md:pt-0 md:pb-[2vh] [--fs:15vw] md:[--fs:min(16vw,23vh)]">
       {/* Header */}
       <header className="flex items-start justify-between gap-4 md:absolute md:inset-x-8 md:top-6 md:z-30">
         <p className="text-[18px] md:text-[20px] font-extrabold tracking-[-0.04em] uppercase">
@@ -92,14 +115,17 @@ export default function Hero() {
         </p>
         <p className="text-[13px] md:text-[14px] font-semibold text-right">
           Contact:{" "}
-          <a href={`tel:${CONTACT.phoneTel}`} className="underline underline-offset-2">
+          <a
+            href={`tel:${CONTACT.phoneTel}`}
+            className="underline underline-offset-2"
+          >
             {CONTACT.phone}
           </a>
         </p>
       </header>
 
       {/* Big text */}
-      <div className="mt-14 md:mt-0 md:pt-[11vh]">
+      <div className="relative z-[1] mt-14 md:mt-0 md:pt-[11vh]">
         <Headline />
       </div>
 
@@ -110,14 +136,25 @@ export default function Hero() {
       </p>
 
       {/* Three iPhones: equal columns, same level, shown in full */}
-      <ul
-        className="relative z-10 mt-8 -mx-5 grid grid-cols-3 items-start gap-[3vw] px-[5vw] md:mx-0 md:mt-[calc(var(--fs)*-0.4)] md:gap-[5vw] md:px-[8vw]"
-        aria-label="Projects on iPhone"
-      >
-        {PROJECTS.map((p, i) => (
-          <PhoneSlot key={p.slug} project={p} index={i} />
-        ))}
-      </ul>
+      <div className="relative -mx-5 mt-8 md:mx-0 md:mt-[calc(var(--fs)*-0.4)]">
+        {/* Three repeating rows behind the phones */}
+        <div
+          aria-hidden
+          className="outline-text pointer-events-none absolute inset-0 z-0 flex select-none flex-col justify-between overflow-hidden font-black uppercase leading-[0.9] text-[15vw] md:text-[12vw] [-webkit-text-stroke-width:1.5px] md:[-webkit-text-stroke-width:2px]"
+        >
+          <MarqueeRow direction="right" />
+          <MarqueeRow direction="left" />
+          <MarqueeRow direction="right" />
+        </div>
+        <ul
+          className="relative z-10 grid grid-cols-3 items-start gap-[3vw] px-[5vw] md:gap-[5vw] md:px-[8vw]"
+          aria-label="Projects on iPhone"
+        >
+          {PROJECTS.map((p, i) => (
+            <PhoneSlot key={p.slug} project={p} index={i} />
+          ))}
+        </ul>
+      </div>
 
       {/* About on small screens (below the phones) */}
       <p className="mt-8 max-w-[20rem] text-[14px] font-semibold leading-snug md:hidden">

@@ -59,8 +59,8 @@ function Item({ project }: { project: Project }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="px-5 pt-16 pb-24 md:px-8 md:pt-28 md:pb-32">
-      <h2 className="mb-10 md:mb-14 border-b border-[#0a0a0a] pb-3 text-[18px] md:text-[20px] font-extrabold tracking-[-0.03em] uppercase">
+    <section id="projects" className="px-5 pt-0 pb-24 md:px-8 md:pt-0 md:pb-32">
+      <h2 className="mb-6 md:mb-8 text-[18px] md:text-[20px] font-extrabold tracking-[-0.03em] uppercase">
         Projects
       </h2>
 
