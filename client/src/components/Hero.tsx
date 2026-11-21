@@ -140,7 +140,7 @@ export default function Hero() {
         {/* Three repeating rows behind the phones */}
         <div
           aria-hidden
-          className="outline-text pointer-events-none absolute inset-0 z-0 flex select-none flex-col justify-between overflow-hidden font-black uppercase leading-[0.9] text-[15vw] md:text-[12vw] [-webkit-text-stroke-width:1.5px] md:[-webkit-text-stroke-width:2px]"
+          className="outline-text pointer-events-none absolute inset-0 z-0 flex select-none flex-col justify-center overflow-hidden font-black uppercase leading-[1.1] text-[6vw] md:text-[5vw] [-webkit-text-stroke-width:1px] md:[-webkit-text-stroke-width:1.5px]"
         >
           <MarqueeRow direction="right" />
           <MarqueeRow direction="left" />
