@@ -33,7 +33,7 @@ function Item({ project }: { project: Project }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Visit ${project.name}`}
-      className="block overflow-hidden transition-opacity duration-300 hover:opacity-90"
+      className="block overflow-hidden transition-opacity duration-500 hover:opacity-90"
     >
       <Preview project={project} />
     </a>
@@ -43,10 +43,10 @@ function Item({ project }: { project: Project }) {
 
   return (
     <motion.article
-      initial={reduce ? false : { opacity: 0, y: 60 }}
+      initial={reduce ? false : { opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.8, ease: [0.2, 0.7, 0.2, 1] }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
       className="mt-14 md:mt-24 first:mt-0"
     >
       <h3 className="display mb-4 md:mb-6 text-[clamp(2.4rem,8.5vw,8rem)]">

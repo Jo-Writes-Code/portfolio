@@ -2,7 +2,9 @@
 
 Portfolio inspired by "The Future in Black": white page, giant black grotesk headline, three iPhone previews over it, landscape previews underneath. Static site, no server or database.
 
-- [x] **Hero phones**: three iPhones in portrait view, equal columns across the full width, same level, large.
+- [x] **Hero headline**: "MY PORTFOLIO" in huge black type.
+- [x] **Hero phones**: three large iPhones in portrait view, equal columns, same level, thin side gaps, bottoms run off the bottom of the screen.
+- [x] **Motion**: subtle, slow fades with a small rise; no sliding text reveals or hover jumps.
 - [x] **Top right**: "Contact: +255762514214" (tel link).
 - [x] **Hero left text**: about me as a freelance web developer based in Tanzania.
 - [x] **Projects section**: renamed "Projects"; each item shows only the project name and its landscape preview image (no other text, no footer).
