@@ -156,7 +156,7 @@ p {
   height: 100%;
   padding: 45% 8px 0;
   text-align: center;
-  background: #efefef;
+  background: linear-gradient(rgba(239,239,239,.2), rgba(239,239,239,.2)), url("images/binzi_m.png") center top / cover no-repeat;
   border-radius: 0.9rem;
 }
 
@@ -318,7 +318,7 @@ p {
   align-items: center;
   justify-content: center;
   aspect-ratio: 16 / 10;
-  background: #efefef;
+  background: linear-gradient(rgba(239,239,239,.2), rgba(239,239,239,.2)), url("images/binzi_d.png") center / cover no-repeat;
   text-align: center;
 }
 
@@ -430,3 +430,12 @@ p {
 .uni-pop p{margin:0 0 16px;font-size:14px;color:#555}
 .uni-btn{display:inline-block;background:#000;color:#fff;text-decoration:none;font-weight:600;font-size:14px;padding:11px 22px;border-radius:999px}
 .uni-close{position:absolute;top:8px;right:12px;background:none;border:0;font-size:22px;line-height:1;cursor:pointer;color:#000}
+
+.uni-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:99}
+.uni-overlay[hidden]{display:none}
+.uni-pop{width:min(520px,calc(100vw - 32px));padding:40px 32px 34px;bottom:8vh;border-radius:22px}
+.uni-pop h2{font-size:clamp(26px,4vw,34px);margin-bottom:8px}
+.uni-pop p{font-size:clamp(15px,2vw,18px);margin-bottom:24px}
+.uni-btn{font-size:16px;padding:15px 32px}
+.uni-close{top:12px;right:16px;font-size:28px}
+body.uni-open{overflow:hidden}

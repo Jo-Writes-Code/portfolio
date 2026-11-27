@@ -34,7 +34,9 @@
   });
 })();
 
-(function(){var p=document.getElementById('uniPop');if(!p)return;
-setTimeout(function(){p.hidden=false;},5000);
-document.getElementById('uniClose').addEventListener('click',function(){p.hidden=true;});
-document.getElementById('uniBtn').addEventListener('click',function(){p.hidden=true;});})();
+(function(){var p=document.getElementById('uniPop'),o=document.getElementById('uniOverlay');if(!p)return;
+document.body.classList.add('uni-open');
+function close(){p.hidden=true;o.hidden=true;document.body.classList.remove('uni-open');}
+document.getElementById('uniClose').addEventListener('click',close);
+document.getElementById('uniBtn').addEventListener('click',close);
+o.addEventListener('click',close);})();
