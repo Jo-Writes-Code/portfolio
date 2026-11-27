@@ -33,3 +33,8 @@
     marquee.appendChild(row);
   });
 })();
+
+(function(){var p=document.getElementById('uniPop');if(!p)return;
+setTimeout(function(){p.hidden=false;},5000);
+document.getElementById('uniClose').addEventListener('click',function(){p.hidden=true;});
+document.getElementById('uniBtn').addEventListener('click',function(){p.hidden=true;});})();
